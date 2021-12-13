@@ -1,0 +1,37 @@
+body {
+    background-image: url("../images/bgimg1.jpg") !important;
+}
+
+.form-card {
+    background: rgba(238, 238, 244, 0.05) !important;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+    backdrop-filter: blur(4px) !important;
+    -webkit-backdrop-filter: blur(4px) !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+    margin: 120px !important;
+    width: 50% !important;
+    color: white;
+}
+.form-head{
+    font-family: 'Ubuntu', sans-serif !important;
+}
+.form-element{
+
+    margin: 1px;
+    padding: 5px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.button{
+
+    margin-top: 20px;
+    font-family: 'Ubuntu', sans-serif;
+}
+.form-input-elt{
+    font-size: 15px;
+    text-align: center;
+    border-radius: 5px;
+    font-family: 'Ubuntu', sans-serif;
+    border:2px solid white;
+}
