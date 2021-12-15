@@ -1,12 +1,14 @@
 package com.example.model;
 
 import java.io.Serializable;
+import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -14,6 +16,22 @@ import javax.persistence.Table;
 public class ProductDTO implements Serializable, Comparable<ProductDTO> {
 	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int productid;
+	@Override
+	public int hashCode() {
+		return Objects.hash(brand, cartItems, category, description, image, price, productid, productname, stock);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductDTO other = (ProductDTO) obj;
+		return productid == other.productid;
+				
+	}
 	private String productname;
 	private String category;
 	private float price;
@@ -21,6 +39,9 @@ public class ProductDTO implements Serializable, Comparable<ProductDTO> {
 	private String image;
 	private String brand;
 	private int stock;
+	
+	@OneToMany(mappedBy="productid")
+	private Set<CartDTO> cartItems;
 	
 	public ProductDTO() {
 		super();

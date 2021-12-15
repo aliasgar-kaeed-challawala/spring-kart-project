@@ -1,7 +1,9 @@
 package com.example.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,10 +11,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 @Entity
 public class BillDTO {
 	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int billid;
+	
+	
+	private int userid;
+	
+	public int getUserid() {
+		return userid;
+	}
+	
+	private String username;
+	private LocalDate billdate;
+	private float total;
+	@OneToMany(mappedBy="billid")
+	private Set<BillItem> billitems;
+	
+	public BillDTO(String username, int userid, LocalDate invoice_date, float total) {
+		super();
+		this.username = username;
+
+		this.billdate = invoice_date;
+		this.total = total;
+	}
 	public int getBillid() {
 		return billid;
 	}
@@ -20,20 +44,6 @@ public class BillDTO {
 	public void setBillid(int billid) {
 		this.billid = billid;
 	}
-	@ManyToOne()
-	private User user;
-	private String username;
-	private Date billdate;
-	private float total;
-	
-	public BillDTO(String username, int userid, Date invoice_date, float total) {
-		super();
-		this.username = username;
-
-		this.billdate = invoice_date;
-		this.total = total;
-	}
-	
 	public String getUsername() {
 		return username;
 	}
@@ -42,11 +52,11 @@ public class BillDTO {
 	}
 
 	
-	public Date getInvoice_date() {
+	public LocalDate getInvoice_date() {
 		return billdate;
 	}
-	public void setInvoice_date(Date invoice_date) {
-		this.billdate = invoice_date;
+	public void setInvoice_date(LocalDate localDate) {
+		this.billdate = localDate;
 	}
 	public float getTotal() {
 		return total;
@@ -71,9 +81,15 @@ public class BillDTO {
 				&& Float.floatToIntBits(total) == Float.floatToIntBits(other.total) 
 				&& Objects.equals(username, other.username);
 	}
+	public BillDTO() {}
 	@Override
 	public String toString() {
 		return "BillDTO [username=" + username + ", invoice_date=" + billdate + ", total="
 				+ total + "]";
+	}
+	public void setUserid(int userid) {
+		// TODO Auto-generated method stub
+		this.userid=userid;
+		
 	}
 }

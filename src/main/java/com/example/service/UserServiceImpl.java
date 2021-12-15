@@ -3,6 +3,8 @@ package com.example.service;
 import java.util.List;
 
 import javax.persistence.PersistenceException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -71,6 +73,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void deleteUserById(int userid) {
 		userDAO.deleteByid(userid);
+	}
+	public User extractUserModel(HttpServletRequest request) {
+		HttpSession session =  request.getSession();
+//		int id = (int)session.getAttribute("id");
+        User userModel = userDAO.getUserByid(1);    
+		return userModel;
 	}
 
 }

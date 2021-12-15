@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.persistence.PersistenceException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,5 @@ public interface UserService {
 //	public UserDTO getuserById(int userid);
 	public void deleteUserById(int userid);
 	public User getUserById(int userid);
+	public User extractUserModel(HttpServletRequest request);
 }

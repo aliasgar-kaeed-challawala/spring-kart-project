@@ -26,14 +26,14 @@ private String password;
 private String address;
 private String phoneNumber;
 //private int flag;
-@OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-private Set<BillDTO> bills;
-public Set<BillDTO> getBills() {
-	return bills;
+@OneToMany(mappedBy = "userId",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+private Set<CartDTO> cartItems;
+public Set<CartDTO> getCartItems() {
+	return cartItems;
 }
 
-public void setBills(Set<BillDTO> bills) {
-	this.bills = bills;
+public void setCartItems(Set<CartDTO> cartItems) {
+	this.cartItems = cartItems;
 }
 
 @ManyToMany(cascade = CascadeType.MERGE, fetch=FetchType.EAGER)
@@ -65,7 +65,7 @@ public User(User user) {
 	this.password = user.getPassword();
 	this.address = user.getAddress();
 	this.phoneNumber = user.getPhoneNumber();
-	this.bills = user.getBills();
+	this.cartItems = user.getCartItems();
 	this.roles = user.getRoles();
 }
 

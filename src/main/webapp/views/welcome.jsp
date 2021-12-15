@@ -88,6 +88,9 @@ uri="http://www.springframework.org/tags/form"%>
             </ul>
           </li>
         </ul>
+        <li class="nav-item active">
+                    <a class="nav-link" href="/cart">Cart</a>
+                </li>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>

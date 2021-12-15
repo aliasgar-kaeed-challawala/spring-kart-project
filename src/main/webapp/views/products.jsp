@@ -38,7 +38,7 @@ uri="http://www.springframework.org/tags/form"%>
 				<!-- For loop : 3 times-->	
 				<c:forEach items="${products}" var="product">
 					<div class="col-lg-4 p-3 d-flex align-items-stretch">
-						<div class="card" height="300" width="1	50">
+						<div class="card" height="100" width="50">
 							<img src="${product.image}" class="card-img-top">
 							<div class="card-body">
 								<h6 class="card-title">${product.productname.toUpperCase()}</h6>
@@ -49,12 +49,20 @@ uri="http://www.springframework.org/tags/form"%>
 								</div>
 
 								<p class="card-text">${product.description}</p>
+								<br>
+								<form:form  action="/addtocart?productid=${product.productid}" method="post">
+								Quantity:<input type="number" value="1" name="quantity"/>
+								
 							</div>
 							<div class="card-footer">
-								<a class="btn btn-dark btn-block btn-login"
-									style="color: #ffffff;"
-									href="" role="button">Add to cart</a>
+								<!-- <a class="btn btn-dark btn-block btn-login"
+									style="color: #ffffff;" -->
+									<%-- href="/addtocart?productid=${product.productid}" role="button">Add to cart</a> --%>
+								
+								<input class="btn btn-dark btn-block btn-login" style="color: #ffffff;" type="submit" value="Add to Cart">
+						</form:form>   
 							</div>
+							
 
 						</div>
 					</div>

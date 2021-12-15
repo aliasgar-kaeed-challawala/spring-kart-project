@@ -48,8 +48,8 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProductDTO> getProductsByCategory(String category) {
 		List<ProductDTO> products = productDAO.findByCategory(category);
-		System.out.println("inside product service");
-		System.out.println(products);
+//		System.out.println("inside product service");
+//		System.out.println(products);
 		return products;
 	}
 
