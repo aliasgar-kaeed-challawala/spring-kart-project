@@ -71,7 +71,7 @@ public class CartController {
 	       return "redirect:/user/productsbycategory?category="+productService.getProductById(productid).getCategory();
 	    }
 	 @RequestMapping(value = { "/cart" }, method = RequestMethod.GET)
-	 public ModelAndView getCartItems(ModelAndView mandv, HttpServletRequest request) {
+	 public ModelAndView getCartItems(ModelAndView model, HttpServletRequest request) {
 		 String username;
 		 	Object principal = SecurityContextHolder. getContext(). getAuthentication(). getPrincipal();
 		 	if (principal instanceof UserDetails) {
@@ -81,30 +81,22 @@ public class CartController {
 		 		}
 		 	User user = userDAO.findByUsername(username).orElse(null);	        
 	        Set<CartDTO> cartItemModels = cartDAO.findAllByUserId(user);
-	        for(CartDTO cartItemModel: cartItemModels) {				
+	        float total = 0;
+	        for(CartDTO cartItemModel: cartItemModels) {
+	        	total+=cartItemModel.getQuantity()*cartItemModel.getProductid().getPrice();
 				cartDAO.save(cartItemModel);
 			}	        
-			mandv.addObject("cartItems", cartItemModels);
-			mandv.addObject("title", "Your Cart");
-			mandv.setViewName("cart");
-			return mandv; 
+	        model.addObject("tot",total);
+			model.addObject("cartItems", cartItemModels);
+			model.addObject("title", "Your Cart");
+			model.setViewName("cart");
+			return model; 
 		}
 		
-//	 @RequestMapping(value = { "/removecartitem" }, method = RequestMethod.GET)
-//	    public String removeFromCart(@RequestParam("productid") int productid, ModelMap model,HttpSession session) {
-////		 
-//		for(ProductDTO product:GlobalData.cart) {
-//			System.out.println("inside for loop....");
-//			System.out.println(productService.getProductById(productid));
-//			System.out.println(product);
-//			if(product.equals(productService.getProductById(productid))) {
-//				System.out.println("inside for loop if..");
-//				GlobalData.cart.remove(GlobalData.cart.indexOf(productService.getProductById(productid)));
-//			}
-//		}
-//		 System.out.println(GlobalData.cart);
-//	      session.setAttribute("cart", GlobalData.cart);
-//	      return "redirect:/cart";
-//	    }
+	 @RequestMapping(value= {"/removecartitem"}, method=RequestMethod.GET)
+	 public String removeFromCart(@RequestParam("cartItemId") int cartItemId) {
+		 cartDAO.deleteById(cartItemId);
+		 return "redirect:/cart";
+	 }
 	
 }

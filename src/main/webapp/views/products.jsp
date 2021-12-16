@@ -29,9 +29,17 @@ uri="http://www.springframework.org/tags/form"%>
 	
 	<section id="movie-cards">
 		<div class="container-fluid">
-			<div style="padding: 2rem;">
+			<!-- <div style="padding: 2rem;">
 				<h1>List of Products</h1>
+			</div> -->
+			<div class="d-flex justify-content-between" style="padding: 2rem;">
+				<h1>List of Products</h1>
+				<div class="d-flex justify-content-between">
+				<a href="/cart"><button type="button" class="btn btn-outline-info" style="margin-right:5px;"> My Cart</button></a>
+				<a href="/"><button type="button" class="btn btn-outline-primary">Home</button></a>
+				</div>
 			</div>
+			
 			<!-- Start of Deck 1 -->
 			<!-- For loop len(list)%3 -->
 			<div class="row card-deck-spacing">

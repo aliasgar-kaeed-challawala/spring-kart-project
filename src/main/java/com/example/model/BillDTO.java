@@ -82,11 +82,6 @@ public class BillDTO {
 				&& Objects.equals(username, other.username);
 	}
 	public BillDTO() {}
-	@Override
-	public String toString() {
-		return "BillDTO [username=" + username + ", invoice_date=" + billdate + ", total="
-				+ total + "]";
-	}
 	public void setUserid(int userid) {
 		// TODO Auto-generated method stub
 		this.userid=userid;

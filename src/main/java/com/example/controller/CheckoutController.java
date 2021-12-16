@@ -12,13 +12,18 @@ import com.example.dao.BillDAO;
 import com.example.dao.CartDAO;
 import com.example.dao.UserDAO;
 import com.example.model.BillDTO;
-import com.example.model.BillService;
+import com.example.model.Order;
 import com.example.model.User;
+import com.example.service.BillService;
 import com.example.service.CartService;
 import com.example.service.EmailService;
+import com.example.service.PaypalService;
 import com.example.service.ProductService;
 import com.example.service.SMSService;
 import com.example.service.UserService;
+import com.paypal.api.payments.Links;
+import com.paypal.api.payments.Payment;
+import com.paypal.base.rest.PayPalRESTException;
 
 @Controller
 public class CheckoutController {
@@ -34,12 +39,16 @@ public class CheckoutController {
 	CartService cartService;
 	@Autowired
 	BillDAO billDAO;
-	
+	@Autowired
+	PaypalService paypalService;
 	@Autowired
 	BillService billService;
 	
+	public static final String SUCCESS_URL = "pay/success";
+	public static final String CANCEL_URL = "pay/cancel";
+	
 	 @RequestMapping(value = { "/checkout" }, method = RequestMethod.POST )
-	 public String makePaymentAndCheckout(ModelAndView model) {
+	 public ModelAndView makePaymentAndCheckout(ModelAndView model) {
 		 
 		 String username;
 		 	Object principal = SecurityContextHolder. getContext(). getAuthentication(). getPrincipal();
@@ -52,14 +61,6 @@ public class CheckoutController {
 	       
 
 	        BillDTO bill = new BillDTO() ;
-//	        orderModel.setName(name);
-//	        orderModel.setAddress(address);
-//	        orderModel.setContactNumber(contactNo);
-//	        orderModel.setPaymentType(paymentType);
-//	        orderModel.setUserId(userModel.getEmail());
-//	        orderModel.setTotalPrice(cartItemModelService.getTotalPrice(userModel));
-//	        orderModel.setPaymentId("COD" + new Date().toString());
-//	        orderModel.setStatus("ordered");
 	        bill.setInvoice_date(java.time.LocalDate.now());
 	        bill.setTotal(cartService.getTotalPrice(user));
 	        bill.setUsername(username);
@@ -68,15 +69,40 @@ public class CheckoutController {
 	        System.out.println("ordermode id: " + bill.getBillid());
 	        billDAO.save(bill);
 	        billService.copyCartToOrders(user, bill);
-	        
 	        cartDAO.deleteAllByUserId(user);
+	        
+	        model.setViewName("redirect:/ordersuccess");
+	        try {
 
-	        EmailService emailService =new EmailService();
-	        emailService.sendInvoice(user.getEmail(),"Order Confirmation and Invoice","SpringKart.pdf");
-	        SMSService sms = new SMSService();
-	        sms.sendSMS(user.getPhoneNumber());
-	        return "redirect:/";
+	           	 Order order = new Order(bill.getTotal(), "USD", "PayPal", "sale","Payment to springkart");
+	          
+	     			Payment payment = paypalService.createPayment((double)order.getPrice(), order.getCurrency(), order.getMethod(),
+	     					order.getIntent(), order.getDescription(), "http://localhost:8080/" + CANCEL_URL,
+	     					"http://localhost:8080/" + SUCCESS_URL);
+	     			for(Links link:payment.getLinks()) {
+	     				System.out.println("Link: " + link.getRel() + " : " + link.getHref());
+	     				if(link.getRel().equals("approval_url")) {
+	     					EmailService emailService =new EmailService();
+	     			        emailService.sendInvoice(user.getEmail(),"Order Confirmation and Invoice","SpringKart.pdf");
+	     			        SMSService sms = new SMSService();
+	     			        sms.sendSMS(user.getPhoneNumber());
+	     					return new ModelAndView("redirect:"+link.getHref());
+	     				}
+	     			}
+	     			
+	     		} catch (PayPalRESTException e) {
+	     		
+	     			e.printStackTrace();
+	     		}
+	      
+	        return model;
 		 
 	 }
+	 @RequestMapping(value="/paymentSuccess")
+		public String paymentSuccess() {
+	        
+	        return "redirect:/ordersuccess";
+			
+		}
 	
 }

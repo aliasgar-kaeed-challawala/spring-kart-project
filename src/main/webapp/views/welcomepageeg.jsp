@@ -2,6 +2,7 @@
 pageEncoding="ISO-8859-1"%> <%@ taglib prefix="form"
 uri="http://www.springframework.org/tags/form"%> 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,32 +65,13 @@ uri="http://www.springframework.org/tags/form"%>
 	</div> <!-- col.// --> 
 	<div class="col-lg-5 col-xl-4 col-sm-12">
 		<div class="widgets-wrap float-md-right">
-			<a href="#" class="widget-header mr-2">
-				
-					<i class="icon-sm rounded-circle border fa fa-shopping-cart"></i>
-					<span class="notify">0</span>
-				
-			</a>
-			<a href="#" data-toggle="dropdown" data-offset="20,10">
-					
-						
-							<span><a class="nav-link" href="/cart">Cart</a></span>
-				
-			
-						
-							
-						
-							<span><a class="nav-link" sec:authorize="isAnonymous()" href="/login">login</a></span>
-							
-							
-							<span><a class="nav-link" sec:authorize="isAuthenticated()" href="/logout">logout</a></span>
-						
-					
-				</a> 
-						
-				
-					
-				
+				<span><a class="nav-link" href="/cart">Cart</a></span>
+				<sec:authorize access="isAnonymous()">
+    				<span><a href="/login">Login</a></span>
+				</sec:authorize>
+					<sec:authorize access="isAuthenticated()">
+    				<span><a href="/logout">Logout</a></span>
+			</sec:authorize>
 			  <!-- widget-header .// -->
 		</div> <!-- widgets-wrap.// -->
 	</div> <!-- col.// -->
