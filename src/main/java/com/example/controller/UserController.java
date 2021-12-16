@@ -39,7 +39,7 @@ public class UserController {
 	
 	@RequestMapping(value = { "/home" }, method = RequestMethod.GET)
 	public String getHome() {
-		return "welcome";
+		return "welcomepageeg";
 	}
 //	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 //	public String getLogin() {
@@ -70,7 +70,7 @@ public class UserController {
 
 		User u = userService.register(user);
 		System.out.println(u);
-		return "welcome";
+		return "welcomepageeg";
 	}
 	 @RequestMapping(value = {"/productsbycategory" }, method = RequestMethod.GET)
 	    public String listProducts(@RequestParam("category") String category,ModelMap model,HttpSession session,HttpServletRequest request) {

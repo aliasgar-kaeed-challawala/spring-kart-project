@@ -17,6 +17,7 @@ import com.example.model.User;
 import com.example.service.CartService;
 import com.example.service.EmailService;
 import com.example.service.ProductService;
+import com.example.service.SMSService;
 import com.example.service.UserService;
 
 @Controller
@@ -72,7 +73,8 @@ public class CheckoutController {
 
 	        EmailService emailService =new EmailService();
 	        emailService.sendInvoice(user.getEmail(),"Order Confirmation and Invoice","SpringKart.pdf");
-	       
+	        SMSService sms = new SMSService();
+	        sms.sendSMS(user.getPhoneNumber());
 	        return "redirect:/";
 		 
 	 }

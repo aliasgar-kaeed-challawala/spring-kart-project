@@ -17,7 +17,7 @@ public class MyController {
 	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
     public String landingPage(ModelMap model) {
 		//TODO: Implement session management and redirect to user home or corp home
-        return "welcome";
+        return "welcomepageeg";
     }
 
 }

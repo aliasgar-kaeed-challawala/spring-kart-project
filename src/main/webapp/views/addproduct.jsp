@@ -62,6 +62,10 @@ uri="http://www.springframework.org/tags/form"%>
         			 <form:option value="Mobile" label="Mobile"/>  
        				 <form:option value="Laptop" label="Laptop"/>  
        				 <form:option value="Video Games" label="Video Games"/>  
+       				 <form:option value="Cameras" label="Cameras"/>
+       				 <form:option value="Headphones" label="Headphones"/>
+       				 <form:option value="Smart Watches" label="Smart Watches"/>      
+       				 <form:option value="Tablets" label="Tablets"/>  
  				</form:select>
                 <form:errors path="category" cssClass="error"/>
                
