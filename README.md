@@ -19,3 +19,6 @@ To run the application on your device, please follow the below instructions,
   
   Admin login username : Admin
   password : 12345
+ To go to the admin dashboard,
+ enter the following URL:
+ http://localhost:8080/admin/list
