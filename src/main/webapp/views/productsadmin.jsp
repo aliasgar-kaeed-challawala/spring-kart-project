@@ -32,16 +32,16 @@ uri="http://www.springframework.org/tags/form"%>
   
   	<!-- Page Content  -->
         
-			<span><h1>Admin Dashboard</h1></span>
+			<span><h1>All Products</h1></span>
 			<br>
 			<hr>
 
-			<a href="/admin/addproduct"><button type="button" class="btn btn-success">Add Product</button>
+			<a href="/admin/addproduct"><button type="button" class="btn btn-success" style="margin-left:10px">Add Product</button>
 			</a>
 			<br>
 			<hr>
 		    <div class="table-responsive">
-		        <table class="content-table table" id="table-id">
+		        <table class="content-table table" id="table-id" style="margin-left:10px">
 		            <thead>
 		                <tr>
 		                    
@@ -67,7 +67,7 @@ uri="http://www.springframework.org/tags/form"%>
 					            <td>${product.productname}</td>
 					            <td>${product.stock}</td>
 					            <td class="d-flex">
-					            	<a href="/admin/editproduct?productid=${product.productid}" class="btn btn-warning btn-sm">EDIT</a>
+					            	<a href="/admin/editproduct?productid=${product.productid}" style="margin-right:10px" class="btn btn-warning btn-sm">EDIT</a>
 					            	<a href="/admin/deleteproduct-${product.productid}-product" class="btn btn-danger ml-2 btn-sm">DELETE</a>
 					            </td>
 					            </tr>

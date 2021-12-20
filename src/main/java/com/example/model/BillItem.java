@@ -21,7 +21,7 @@ public class BillItem {
 	private int quantity;
 	private float price;
 	private String productName;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.EAGER)
 	private BillDTO billid;
 	
 	

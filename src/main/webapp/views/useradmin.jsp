@@ -32,20 +32,21 @@ uri="http://www.springframework.org/tags/form"%>
   
   	<!-- Page Content  -->
         
-    		<h1>Admin Dashboard</h1>
-			<a href="/admin/adduser"><button type="button" class="btn btn-success">Add User</button>
+    		<h1>All Users</h1>
+    		<br>
+			<a href="/admin/adduser"><button type="button" class="btn btn-success" style="margin:10px">Add User</button>
 			</a>
 			<br>
 			<hr>
 		    <div class="table-responsive">
-		        <table class="content-table table" id="table-id">
+		        <table class="content-table table" id="table-id" style="margin-left:10px">
 		            <thead>
 		                <tr>
 		                    
 		                    <th>User Id </th>
 		                    <th>User Name</th>
 		                    <th>Email</th>
-		                    <th>Password</th>
+		                    <!-- <th>Password</th> -->
 		                    <th>Phone Number</th>
 		                    <th>Address</th>
 		                    
@@ -57,12 +58,13 @@ uri="http://www.springframework.org/tags/form"%>
 					            <td>${user.userid}</td>
 					            <td>${user.username}</td>
 					            <td>${user.email}</td>
-					            <td>${user.password}</td>
+					            <%-- <td>${user.password}</td> --%>
 					            <td>${user.phoneNumber}</td>
 					            <td>${user.address}</td>
 					            
 					            <td class="d-flex">
-					            	<a href="/admin/edituser?userid=${user.userid}" class="btn btn-warning btn-sm">EDIT</a>
+					            	<a href="/admin/edituser?userid=${user.userid}" style="margin-right:4px;" class="btn btn-warning btn-sm">EDIT</a>
+					            	<br>
 					            	<a href="/admin/deleteuser-${user.userid}-user" class="btn btn-danger ml-2 btn-sm">DELETE</a>
 					            </td>
 					            </tr>

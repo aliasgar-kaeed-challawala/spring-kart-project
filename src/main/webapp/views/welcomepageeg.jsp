@@ -44,7 +44,7 @@ uri="http://www.springframework.org/tags/form"%>
 <body >
 <header class="section-header">
 <section class="header-main border-bottom" style="padding: 20px">
-	<!-- <div class="container"> -->
+	<%-- <!-- <div class="container"> -->
     <div class="row" >
 	<div class="col-lg-3 col-sm-4 col-12">
 	<div class="brand-wrap">
@@ -69,14 +69,47 @@ uri="http://www.springframework.org/tags/form"%>
 				<sec:authorize access="isAnonymous()">
     				<span><a href="/login">Login</a></span>
 				</sec:authorize>
-					<sec:authorize access="isAuthenticated()">
+				
+				<sec:authorize access="isAuthenticated()">
     				<span><a href="/logout">Logout</a></span>
-			</sec:authorize>
+				</sec:authorize>
 			  <!-- widget-header .// -->
 		</div> <!-- widgets-wrap.// -->
 	</div> <!-- col.// -->
-</div><!-- row.// -->
+</div><!-- row.// --> --%>
 	<!-- </div>  --><!-- container.// -->
+	<nav class="navbar navbar-light light-blue lighten-4">
+
+  <!-- Navbar brand -->
+  <img class="logo" src="../resources/images/logo.jpg" width="180" height="40">
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i
+        class="fas fa-bars fa-1x"></i></span></button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/cart">Cart <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/myorders">My Orders</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">logout</a>
+      </li>
+    </ul>
+    <!-- Links -->
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
 </section> <!-- header-main .// -->
 </header> <!-- section-header.// -->
 

@@ -1,5 +1,6 @@
 package com.example.service;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +27,7 @@ public class BillService {
 
 	public boolean copyCartToOrders(User userModel, BillDTO billDTO) {
 		Set<CartDTO> cartItems = cartDAO.findAllByUserId(userModel);
-		
+		HashSet<BillItem> billproducts =new HashSet<BillItem>();
 		for(CartDTO cartItem: cartItems) {
 			BillItem billItem = new BillItem();
 			
@@ -35,10 +36,10 @@ public class BillService {
 			billItem.setPrice(cartItem.getProductid().getPrice());
 			billItem.setQuantity(cartItem.getQuantity());
 			billItem.setProductName(cartItem.getProductid().getProductname());
-			
+			billproducts.add(billItem);
 			billItemDAO.save(billItem);
 		}
-		
+		billDTO.setBillitems(billproducts);
 		return true;
 	}
 	

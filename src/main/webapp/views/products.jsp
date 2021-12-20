@@ -37,6 +37,7 @@ uri="http://www.springframework.org/tags/form"%>
 				<div class="d-flex justify-content-between">
 				<a href="/cart"><button type="button" class="btn btn-outline-info" style="margin-right:5px;"> My Cart</button></a>
 				<a href="/"><button type="button" class="btn btn-outline-primary">Home</button></a>
+				<a href="/myorders"><button type="button" style="margin-left:5px;" class="btn btn-outline-secondary">My Orders</button></a>
 				</div>
 			</div>
 			
@@ -47,7 +48,7 @@ uri="http://www.springframework.org/tags/form"%>
 				<c:forEach items="${products}" var="product">
 					<div class="col-lg-4 p-3 d-flex align-items-stretch">
 						<div class="card" height="100" width="50">
-							<img src="${product.image}" class="card-img-top">
+							<img src="${product.image}" class="card-img-top" >
 							<div class="card-body">
 								<h6 class="card-title">${product.productname.toUpperCase()}</h6>
 								<b><p>&#8377;${product.price}</p> </b>
@@ -59,7 +60,7 @@ uri="http://www.springframework.org/tags/form"%>
 								<p class="card-text">${product.description}</p>
 								<br>
 								<form:form  action="/addtocart?productid=${product.productid}" method="post">
-								Quantity:<input type="number" value="1" name="quantity"/>
+								Quantity:<input type="number" value="1" min="1" name="quantity"/>
 								
 							</div>
 							<div class="card-footer">

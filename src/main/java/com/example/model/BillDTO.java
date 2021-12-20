@@ -12,7 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.transaction.Transactional;
 @Entity
+@Transactional
 public class BillDTO {
 	@Id@GeneratedValue(strategy = GenerationType.IDENTITY)	
 	private int billid;
@@ -23,18 +25,24 @@ public class BillDTO {
 	public int getUserid() {
 		return userid;
 	}
-	
+
 	private String username;
 	private LocalDate billdate;
 	private float total;
 	@OneToMany(mappedBy="billid")
 	private Set<BillItem> billitems;
 	
-	public BillDTO(String username, int userid, LocalDate invoice_date, float total) {
+	public Set<BillItem> getBillitems() {
+		return billitems;
+	}
+	public void setBillitems(Set<BillItem> billitems) {
+		this.billitems = billitems;
+	}
+	public BillDTO(String username, int userid, LocalDate billdate, float total) {
 		super();
 		this.username = username;
-
-		this.billdate = invoice_date;
+		this.userid = userid;
+		this.billdate = billdate;
 		this.total = total;
 	}
 	public int getBillid() {
@@ -52,10 +60,10 @@ public class BillDTO {
 	}
 
 	
-	public LocalDate getInvoice_date() {
+	public LocalDate getBilldate() {
 		return billdate;
 	}
-	public void setInvoice_date(LocalDate localDate) {
+	public void setBilldate(LocalDate localDate) {
 		this.billdate = localDate;
 	}
 	public float getTotal() {

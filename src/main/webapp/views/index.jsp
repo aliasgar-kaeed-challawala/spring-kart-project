@@ -44,7 +44,7 @@ uri="http://www.springframework.org/tags/form"%>
                <form:form method="POST" modelAttribute="user">
                
                 <label for="username" class="form-element" >Username</label><br>
-                 <form:input placeholder="Enter username" type="text" class="form-element form-input-elt" path="username" id="username"/><br>
+                 <form:input placeholder="Enter username" type="text" class="form-element form-input-elt" path="username" id="username" required="required"/><br>
                 <form:errors path="username" cssClass="error"/>
                 
                 
@@ -52,22 +52,22 @@ uri="http://www.springframework.org/tags/form"%>
                
                 
                 <label for="password" class="form-element" >Password</label><br>
-                <form:input type="password" placeholder="Enter password" class="form-element form-input-elt" path="password" id="password"/><br>
+                <form:input type="password" placeholder="Enter password" class="form-element form-input-elt" path="password" id="password" required="required"/><br>
                 <form:errors path="password" cssClass="error"/>
                 
                 
                 <label for="email" class="form-element" >Email</label><br>
-                <form:input type="email" placeholder="Enter email" class="form-element form-input-elt" path="email" id="email"/><br>
+                <form:input type="email" placeholder="Enter email" class="form-element form-input-elt" path="email" id="email" required="required"/><br>
                 <form:errors path="email" cssClass="error"/>
                
                 
                 <label for="address" class="form-element" >Address</label><br>
-                <form:input type="text" placeholder="Enter address" class="form-element form-input-elt" path="address" id="address"/><br>
+                <form:input type="text" placeholder="Enter address" class="form-element form-input-elt" path="address" id="address" required="required"/><br>
                 <form:errors path="address" cssClass="error"/>
                 
                
                 <label for="phoneNumber" class="form-element">Phone number:</label><br>
-                <form:input placeholder="Enter phone number" class="form-element form-input-elt" path="phoneNumber" id="phoneNumber"/><br>
+                <form:input placeholder="Enter phone number" class="form-element form-input-elt" path="phoneNumber" id="phoneNumber" required="required"/><br>
                 <form:errors path="phoneNumber" cssClass="error"/>
                 
                 

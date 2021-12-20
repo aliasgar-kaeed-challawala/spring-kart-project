@@ -1,6 +1,5 @@
 package com.example.controller;
 import java.util.List;
-import java.util.Locale;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,14 +10,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.dao.BillDAO;
 import com.example.model.AdminDTO;
+import com.example.model.BillDTO;
 import com.example.model.ProductDTO;
 import com.example.model.User;
 import com.example.service.AdminService;
@@ -41,7 +40,8 @@ public class AdminController {
 	@Autowired
 	UserService userService;
 	
-
+	@Autowired
+	BillDAO billDAO;
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String getLogin() {
@@ -127,50 +127,47 @@ public class AdminController {
 		        productService.deleteProductById(productid);
 		        return "redirect:/admin/productsadmin";
 		    }
-		 @RequestMapping(value = {"/useradmin" }, method = RequestMethod.GET)
-		    public String listUsers(ModelMap model,HttpSession session) {
-//			 if(session.getAttribute("admin")==null) {
-//				 return "redirect:/admin/login";
-//			 	}
-		        List<User> users = userService.getAllUsers();
-		        model.addAttribute("users", users);
-		        return "useradmin";
+		 @RequestMapping(value = {"/ordersadmin" }, method = RequestMethod.GET)
+		    public String listOrders(ModelMap model,HttpSession session) {
+		        List<BillDTO> bills = billDAO.findAll();
+		        model.addAttribute("bills", bills);
+		        return "ordersadmin";
 		    }
-		 @RequestMapping(value = { "/adduser" }, method = RequestMethod.GET)
-			public String getUser(ModelMap model) {
-				User user = new User();
-				model.addAttribute("user", user);
-				return "adduser";
+		 @RequestMapping(value = { "/addorder" }, method = RequestMethod.GET)
+			public String getOrer(ModelMap model) {
+				BillDTO bill = new BillDTO();
+				model.addAttribute("bill", bill);
+				return "addorder";
 			}
 
-			@RequestMapping(value = { "/adduser" }, method = RequestMethod.POST)
-			public String postUser(User user, BindingResult result) {
+			@RequestMapping(value = { "/addorder" }, method = RequestMethod.POST)
+			public String postOrder(BillDTO bill, BindingResult result) {
 
-				User u = userService.add(user);
-				System.out.println(u);
-				return "redirect:/admin/useradmin";
+				BillDTO b = billDAO.save(bill);
+				System.out.println(b);
+				return "redirect:/admin/ordersadmin";
 			}
-			 @RequestMapping(value = { "/edituser" }, method = RequestMethod.GET)
-			    public String getEditUser(@RequestParam("userid")int userid, ModelMap model) {
-			        User user = userService.getUserById(userid);
-			        System.out.println(user);
-//			        System.out.println(productid);
-			        model.addAttribute("user", user);
-			        return "adduser";
-			    }
-			 @RequestMapping(value = { "/edituser" }, method = RequestMethod.POST)
-			    public String postEditMovie(@RequestParam("userid") int userid ,User user, ModelMap model) {
-			    	User u  = userService.add(user);
-					System.out.println(u);
-					if (u != null) {
-						return "redirect:/admin/useradmin";
-					}
-			        return "adduser";
-			    }
-			 @RequestMapping(value = { "/deleteuser-{userid}-user" }, method = RequestMethod.GET)
-			    public String deleteUser(@PathVariable int userid) {
-			        userService.deleteUserById(userid);
-			        return "redirect:/admin/useradmin";
+//			 @RequestMapping(value = { "/editorder" }, method = RequestMethod.GET)
+//			    public String getEditOrder(@RequestParam("billid") int billid, ModelMap model) {
+//				 	System.out.println("inside edit...............");
+//			        BillDTO bill = billDAO.getById(billid);
+//			        System.out.println(bill);
+//			        model.addAttribute("bill", bill);
+//			        return "addorder";
+//			    }
+//			 @RequestMapping(value = { "/editorder" }, method = RequestMethod.POST)
+//			    public String postEditMovie(@RequestParam("billid") int billid ,BillDTO bill, ModelMap model) {
+//			    	BillDTO b  = billDAO.save(bill);
+//					
+//					if (b != null) {
+//						return "redirect:/admin/ordersadmin";
+//					}
+//			        return "addorder";
+//			    }
+			 @RequestMapping(value = { "/deleteorder" }, method = RequestMethod.GET)
+			    public String deleteOrder(@RequestParam("billid") int billid) {
+			        billDAO.deleteById(billid);
+			        return "redirect:/admin/ordersadmin";
 			    }
 			 @RequestMapping(value = { "/logout" }, method = RequestMethod.GET)
 			    public String logout(@PathVariable int userid,HttpSession session) {
@@ -180,4 +177,47 @@ public class AdminController {
 //			        }
 			        return "redirect:/admin/login";
 			    }
+			 
+			 @RequestMapping(value = {"/useradmin" }, method = RequestMethod.GET)
+			    public String listUsers(ModelMap model,HttpSession session) {
+			        List<User> users = userService.getAllUsers();
+			        model.addAttribute("users", users);
+			        return "useradmin";
+			    }
+			 @RequestMapping(value = { "/adduser" }, method = RequestMethod.GET)
+				public String getUser(ModelMap model) {
+					User user = new User();
+					model.addAttribute("user", user);
+					return "adduser";
+				}
+
+				@RequestMapping(value = { "/adduser" }, method = RequestMethod.POST)
+				public String postUser(User user, BindingResult result) {
+
+					User u = userService.add(user);
+					System.out.println(u);
+					return "redirect:/admin/useradmin";
+				}
+				 @RequestMapping(value = { "/edituser" }, method = RequestMethod.GET)
+				    public String getEditUser(@RequestParam("userid")int userid, ModelMap model) {
+				        User user = userService.getUserById(userid);
+				        System.out.println(user);
+//				        System.out.println(productid);
+				        model.addAttribute("user", user);
+				        return "adduser";
+				    }
+				 @RequestMapping(value = { "/edituser" }, method = RequestMethod.POST)
+				    public String postEditMovie(@RequestParam("userid") int userid ,User user, ModelMap model) {
+				    	User u  = userService.add(user);
+						System.out.println(u);
+						if (u != null) {
+							return "redirect:/admin/useradmin";
+						}
+				        return "adduser";
+				    }
+				 @RequestMapping(value = { "/deleteuser-{userid}-user" }, method = RequestMethod.GET)
+				    public String deleteUser(@PathVariable int userid) {
+				        userService.deleteUserById(userid);
+				        return "redirect:/admin/useradmin";
+				    }
 }

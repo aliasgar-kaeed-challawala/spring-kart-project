@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,7 +41,7 @@ public class ProductDTO implements Serializable, Comparable<ProductDTO> {
 	private String brand;
 	private int stock;
 	
-	@OneToMany(mappedBy="productid")
+	@OneToMany(mappedBy="productid",fetch=FetchType.EAGER)
 	private Set<CartDTO> cartItems;
 	
 	public ProductDTO() {

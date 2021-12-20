@@ -26,7 +26,7 @@ uri="http://www.springframework.org/tags/form"%>
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <title>Add User</title>
+    <title>Add Order</title>
 
     <style>
       .errors {
@@ -39,39 +39,34 @@ uri="http://www.springframework.org/tags/form"%>
       <center>
         <div class="card d-flex justify-content-center form-card" style="width: 18rem;">   
             <div class="card-body">
-              <h3 class="card-title form-head">Add User</h3>
+              <h3 class="card-title form-head">Add order</h3>
               
-               <form:form method="POST" modelAttribute="user">
+               <form:form method="POST" modelAttribute="bill">
                
                 <label for="username" class="form-element" >Username</label><br>
                  <form:input placeholder="Enter username" type="text" class="form-element form-input-elt" path="username" id="username" required="required"/><br>
                 <form:errors path="username" cssClass="error"/>
                 
                 
+                <label for="userid" class="form-element" >User Id</label><br>
+                <form:input type="number" placeholder="Enter User ID" class="form-element form-input-elt" path="userid" id="userid" required="required"/><br>
+                <form:errors path="userid" cssClass="error"/>
+                
+                
+                <label for="billdate" class="form-element" >Order Date</label><br>
+                <form:input type="date" placeholder="Enter Bill Date" class="form-element form-input-elt" path="billdate" id="billdate" required="required"/><br>
+                <form:errors path="billdate" cssClass="error"/>
+               
+                
+                <label for="billamount" class="form-element" >Bill Amount</label><br>
+                <form:input type="number" placeholder="Enter Bill Amount" class="form-element form-input-elt" path="total" id="billamount" required="required"/><br>
+                <form:errors path="total" cssClass="error"/>
                 
                
                 
-                <label for="password" class="form-element" >Password</label><br>
-                <form:input type="password" placeholder="Enter password" class="form-element form-input-elt" path="password" id="password" required="required"/><br>
-                <form:errors path="password" cssClass="error"/>
                 
                 
-                <label for="email" class="form-element" >Email</label><br>
-                <form:input type="email" placeholder="Enter email" class="form-element form-input-elt" path="email" id="email" required="required"/><br>
-                <form:errors path="email" cssClass="error"/>
-               
-                
-                <label for="address" class="form-element" >Address</label><br>
-                <form:input type="text" placeholder="Enter address" class="form-element form-input-elt" path="address" id="address" required="required"/><br>
-                <form:errors path="address" cssClass="error"/>
-                
-               
-                <label for="phoneNumber" class="form-element">Phone number:</label><br>
-                <form:input placeholder="Enter phone number" class="form-element form-input-elt" path="phoneNumber" id="phoneNumber" required="required"/><br>
-                <form:errors path="phoneNumber" cssClass="error"/>
-                
-                
-                <input type="submit" value="Add User" class="btn button btn-outline-success" >
+                <input type="submit" value="Add Order" class="btn button btn-outline-success" >
           
               </form:form>
               

@@ -17,6 +17,7 @@ import com.example.model.User;
 import com.example.service.BillService;
 import com.example.service.CartService;
 import com.example.service.EmailService;
+import com.example.service.PDFGenerationService;
 import com.example.service.PaypalService;
 import com.example.service.ProductService;
 import com.example.service.SMSService;
@@ -61,7 +62,7 @@ public class CheckoutController {
 	       
 
 	        BillDTO bill = new BillDTO() ;
-	        bill.setInvoice_date(java.time.LocalDate.now());
+	        bill.setBilldate(java.time.LocalDate.now());
 	        bill.setTotal(cartService.getTotalPrice(user));
 	        bill.setUsername(username);
 	        bill.setUserid(user.getUserid());
@@ -69,6 +70,8 @@ public class CheckoutController {
 	        System.out.println("ordermode id: " + bill.getBillid());
 	        billDAO.save(bill);
 	        billService.copyCartToOrders(user, bill);
+	        PDFGenerationService pdfgen = new PDFGenerationService();
+	        pdfgen.createPDF(bill, user);
 	        cartDAO.deleteAllByUserId(user);
 	        
 	        model.setViewName("redirect:/ordersuccess");
@@ -82,10 +85,6 @@ public class CheckoutController {
 	     			for(Links link:payment.getLinks()) {
 	     				System.out.println("Link: " + link.getRel() + " : " + link.getHref());
 	     				if(link.getRel().equals("approval_url")) {
-	     					EmailService emailService =new EmailService();
-	     			        emailService.sendInvoice(user.getEmail(),"Order Confirmation and Invoice","SpringKart.pdf");
-	     			        SMSService sms = new SMSService();
-	     			        sms.sendSMS(user.getPhoneNumber());
 	     					return new ModelAndView("redirect:"+link.getHref());
 	     				}
 	     			}
@@ -104,5 +103,6 @@ public class CheckoutController {
 	        return "redirect:/ordersuccess";
 			
 		}
+	 
 	
 }
