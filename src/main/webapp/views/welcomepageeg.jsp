@@ -44,40 +44,7 @@ uri="http://www.springframework.org/tags/form"%>
 <body >
 <header class="section-header">
 <section class="header-main border-bottom" style="padding: 20px">
-	<%-- <!-- <div class="container"> -->
-    <div class="row" >
-	<div class="col-lg-3 col-sm-4 col-12">
-	<div class="brand-wrap">
-		<img class="logo" src="../resources/images/logo.jpg" width="180" height="40">
-	</div> <!-- brand-wrap.// -->
-	</div>
-	 <div class="col-lg-4 col-xl-5 col-sm-8 col-9">
-		<form action="#" class="search">
-			<div class="input-group w-100">
-			    <input type="text" class="form-control" style="width:55%;" placeholder="Search">
-			    <div class="input-group-append">
-			      <button class="btn btn-primary" type="submit">
-			        <i class="fa fa-search"></i>
-			      </button>
-			    </div>
-		    </div>
-		</form> <!-- search-wrap .end// -->
-	</div> <!-- col.// --> 
-	<div class="col-lg-5 col-xl-4 col-sm-12">
-		<div class="widgets-wrap float-md-right">
-				<span><a class="nav-link" href="/cart">Cart</a></span>
-				<sec:authorize access="isAnonymous()">
-    				<span><a href="/login">Login</a></span>
-				</sec:authorize>
-				
-				<sec:authorize access="isAuthenticated()">
-    				<span><a href="/logout">Logout</a></span>
-				</sec:authorize>
-			  <!-- widget-header .// -->
-		</div> <!-- widgets-wrap.// -->
-	</div> <!-- col.// -->
-</div><!-- row.// --> --%>
-	<!-- </div>  --><!-- container.// -->
+	
 	<nav class="navbar navbar-light light-blue lighten-4">
 
   <!-- Navbar brand -->
@@ -222,7 +189,8 @@ uri="http://www.springframework.org/tags/form"%>
       <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
-   <div class="back"><a href="/user/productsbycategory?category=Mobile"><button class="btn btn-dark me-2" >view products</button></a></div>
+   <!-- <div class="back"><a href="/user/productsbycategory?category=Mobile"><button class="btn btn-dark me-2" >view products</button></a></div> -->
+   <div class="back"><a href="/user/productsbycategory?category=Mobile"><button class="btn btn-dark me-2" style="margin-left:-15%; margin-right:50%;">view products</button></a></div>
   </div>
   <div class="card" style="border: 0;border-radius: 10px;">
   <div class="front">
@@ -233,7 +201,7 @@ uri="http://www.springframework.org/tags/form"%>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
     </div>
-    <div class="back"><a href="/user/productsbycategory?category=Laptop"><button class="btn btn-dark me-2" >view products</button></a></div>
+    <div class="back"><a href="/user/productsbycategory?category=Laptop"><button class="btn btn-dark me-2" style="margin-left:-15%; margin-right:50%;">view products</button></a></div>
   </div>
   <div class="card" style="border: 0;border-radius: 10px;">
    <div class="front">
@@ -244,7 +212,7 @@ uri="http://www.springframework.org/tags/form"%>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
       </div>
       </div>
-      <div class="back"><a href="/user/productsbycategory?category=Television"><button class="btn btn-dark me-2" >view products</button></a></div>
+      <div class="back"><a href="/user/productsbycategory?category=Television"><center><button class="btn btn-dark me-2" style="margin-left:-15%; margin-right:50%;">view products</button></center></a></div>
   </div>
   <div class="card" style="border: 0;border-radius: 10px;">
   <div class="front">
@@ -256,7 +224,7 @@ uri="http://www.springframework.org/tags/form"%>
     </div> 
     </div>
     
-    <div class="back"><a href="/user/productsbycategory?category=Video Games"><button class="btn btn-dark me-2" >view products</button></a></div>
+    <div class="back"><a href="/user/productsbycategory?category=Video Games"><button class="btn btn-dark me-2" style="margin-left:-15%; margin-right:50%;">view products</button></a></div>
 </div>
 </div>
 
@@ -273,7 +241,7 @@ uri="http://www.springframework.org/tags/form"%>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
     </div>
-      <div class="back"><a href="/user/productsbycategory?category=Smart Watches"><button class="btn btn-dark me-2" >view products</button></a></div>
+      <div class="back"><a href="/user/productsbycategory?category=Smart Watches"><button style="margin-left:-15%; margin-right:50%;" class="btn btn-dark me-2" >view products</button></a></div>
   </div>
   <div class="card" style="border: 0; border-radius: 10px;">
   <div class="front">
@@ -284,7 +252,7 @@ uri="http://www.springframework.org/tags/form"%>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
     </div>
-     <div class="back"><a href="/user/productsbycategory?category=Tablets"><button class="btn btn-dark me-2" >view products</button></a></div>
+     <div class="back"><a href="/user/productsbycategory?category=Tablets"><button style="margin-left:-15%; margin-right:50%;" class="btn btn-dark me-2" >view products</button></a></div>
   </div>
   <div class="card" style="border: 0; border-radius: 10px;">
   <div class="front">
@@ -295,7 +263,7 @@ uri="http://www.springframework.org/tags/form"%>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
     </div>
-     <div class="back"><a href="/user/productsbycategory?category=Cameras"><button class="btn btn-dark me-2" >view products</button></a></div>
+     <div class="back"><a href="/user/productsbycategory?category=Cameras"><button style="margin-left:-15%; margin-right:50%;" class="btn btn-dark me-2" >view products</button></a></div>
   </div>
   <div class="card" style="border: 0; border-radius: 10px;">
   <div class="front">
@@ -306,41 +274,16 @@ uri="http://www.springframework.org/tags/form"%>
       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
     </div>
     </div>
-      <div class="back"><a href="/user/productsbycategory?category=Headphones"><button class="btn btn-dark me-2" >view products</button></a></div>
+      <div class="back"><a href="/user/productsbycategory?category=Headphones"><button style="margin-left:-15%; margin-right:50%;" class="btn btn-dark me-2" >view products</button></a></div>
   </div>
 </div> 
 
-
- <!-- <div class="card-deck" style="margin-left: 10px;margin-right: 10px;margin-top: 20px;margin-bottom: 20px">
-  <div class="card" style="border: 0; border-radius: 10px;" >
- 
-    <img src="../resources/images/fossil.jpg" class="card-img-top" alt="...">
-  </div>
-  <div class="card" style="border: 0; border-radius: 10px;">
-    <img src="../resources/images/ipad.jpg" class="card-img-top" alt="...">
-  </div>
-  <div class="card" style="border: 0; border-radius: 10px;">
-    <img src="../resources/images/canon.jpg" class="card-img-top" alt="...">
-  </div>
-  <div class="card" style="border: 0; border-radius: 10px;">
-    <img src="../resources/images/sonytws.jpg" class="card-img-top" alt="...">
-  </div>
-</div> 
- -->
  <section class="logocarousel"style="padding-bottom: 150px;margin-left: 20px;margin-right: 20px;background-color: #f8f9fa;">
  <div class="text-center" style="margin-left: 20px;margin-right: 20px; margin-top: 100px; margin-bottom: 40px; border-radius: 10px;padding-top: 20px" ><h2>POPULAR BRANDS</h2></div>
 
 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="carousel">
 
-  <!--Controls-->
- <!--  <div class="controls-bottom">
-    <a class="btn-floating" href="#multi-item-example" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
-    <a class="btn-floating" href="#multi-item-example" data-slide="next"><i
-        class="fas fa-chevron-right"></i></a>
-  </div> -->
-  <!--/.Controls-->
 
-  <!--Indicators-->
   <ol class="carousel-indicators">
     <li data-target="#multi-item-example" data-slide-to="0" class="active"></li>
     <li data-target="#multi-item-example" data-slide-to="1"></li>
