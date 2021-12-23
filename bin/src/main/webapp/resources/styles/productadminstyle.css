@@ -1,0 +1,11 @@
+.product-img{
+	width:100px;
+	height:50px;
+	
+}
+  h1{
+      padding: 10px;
+      display: inline-block;
+      /* font-family: 'Fuzzy Bubbles'; */
+      font-family: 'Ubuntu', sans-serif;
+  }

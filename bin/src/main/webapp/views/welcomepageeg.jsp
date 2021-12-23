@@ -121,7 +121,7 @@ uri="http://www.springframework.org/tags/form"%>
                 Fast Delivery
               </h5>
               <p>
-                Premium delivery available across India.
+                variations of passages of Lorem Ipsum available
               </p>
             </div>
           </div>
@@ -136,7 +136,7 @@ uri="http://www.springframework.org/tags/form"%>
                 Free Shipping
               </h5>
               <p>
-                Free and fast shipping available with hasstle free returns.
+                variations of passages of Lorem Ipsum available
               </p>
             </div>
           </div>
@@ -151,7 +151,7 @@ uri="http://www.springframework.org/tags/form"%>
                 Best Quality
               </h5>
               <p>
-                100% assurance or guarantee money back.
+                variations of passages of Lorem Ipsum available
               </p>
             </div>
           </div>
@@ -166,7 +166,7 @@ uri="http://www.springframework.org/tags/form"%>
                 24x7 Customer support
               </h5>
               <p>
-                24*7 customer support via adminspringkart@gmail.com.
+                variations of passages of Lorem Ipsum available
               </p>
             </div>
           </div>
@@ -383,7 +383,7 @@ uri="http://www.springframework.org/tags/form"%>
 <footer class="section-footer border-top" style="margin-top: 150px;background-color: #eee">
 	<div class="container">
 		<section class="footer-copyright border-top">
-				<p class="float-left text-muted"> ï¿½ 2021 Company  All rights resetved </p>
+				<p class="float-left text-muted"> © 2021 Company  All rights resetved </p>
 				<p target="_blank" class="float-right text-muted">
 					<a href="#">Privacy &amp; Cookies</a> &nbsp;   &nbsp;
 					<a href="#">Accessibility</a>
