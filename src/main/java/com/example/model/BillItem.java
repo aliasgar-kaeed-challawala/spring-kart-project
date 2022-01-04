@@ -16,7 +16,7 @@ public class BillItem {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int billItemNo;
-	@ManyToOne()
+	@ManyToOne(fetch=FetchType.EAGER)
 	private ProductDTO productid;
 	private int quantity;
 	private float price;

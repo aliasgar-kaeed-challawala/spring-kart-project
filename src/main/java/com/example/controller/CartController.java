@@ -1,7 +1,11 @@
 package com.example.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -11,6 +15,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -120,15 +125,41 @@ public class CartController {
 		 		 username = principal. toString();
 		 		}
 		 	User user = userDAO.findByUsername(username).orElse(null);	
-	        Set<BillDTO> bills = billDAO.findAllByUserid(user.getUserid());
-	        
-	        
+		 	List<BillDTO> allBills = billDAO.findAll();
+		 	System.out.println(allBills.size());
+	       List<BillDTO> bills = new ArrayList<BillDTO>();
+	        int i=0;
+	        for(BillDTO bill : allBills)
+	        {
+	        	if (bill.getUserid() == user.getUserid())
+	        	{
+	        		i++;
+	        		bills.add(bill);
+	        	}
+	        }
+	        System.out.println(i);
+	        System.out.println(bills);
 	        model.addObject("bills", bills);
-	        
+	        System.out.println(bills.size());
 	        model.addObject("title", "Orders");
 	        model.setViewName("myorders");
 	        return model;
 			
 		}
+	 @RequestMapping(value = { "/viewdetails" }, method = RequestMethod.GET)
+	    public ModelAndView postEditMovie(@RequestParam("billid") int billid , ModelAndView model) {
+		 	System.out.println(billid);
+		 	BillDTO bill = billDAO.getById(billid);
+		 	Set<BillItem> billitems = billitemDAO.findAllByBillid(bill);
+		 	double total=0;
+		 	for (BillItem billitem : billitems) {
+		 	    total+=billitem.getPrice();
+		 	}
+		 	System.out.println(total);
+		 	model.addObject("total",total);
+		 	model.addObject("billitems", billitems);
+		 	model.setViewName("orderdetails");
+	        return model;
+	    }
 	
 }

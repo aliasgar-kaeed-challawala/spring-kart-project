@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import java.util.Optional;
 import java.util.Set;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,6 @@ import com.example.model.BillDTO;
 public interface BillDAO extends JpaRepository <BillDTO, Integer>{
 
 	
-
+	
 	Set<BillDTO> findAllByUserid(int userid);
 }

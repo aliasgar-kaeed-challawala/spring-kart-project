@@ -8,7 +8,7 @@ public class SMSService {
 	// Find your Account SID and Auth Token at twilio.com/console
 	// and set the environment variables. See http://twil.io/secure
 	public static final String ACCOUNT_SID = "AC1aae5966cb339c0311a89dcef181877a";
-	public static final String AUTH_TOKEN = "572e2c4168c5657146f9e62a649074c7";
+	public static final String AUTH_TOKEN = "0f91cbde35e05bc4c6441514f877c3e2";
 
 	public void sendSMS(String toNumber) {
 		Twilio.init(ACCOUNT_SID, AUTH_TOKEN);

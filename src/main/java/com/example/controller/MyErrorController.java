@@ -26,11 +26,11 @@ public class MyErrorController implements ErrorController {
             } else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
 
                 model.addAttribute("title", "Some thing went wrong");
-                return "errors/500";
+                return "500";
             } else if (statusCode == HttpStatus.FORBIDDEN.value()) {
 
                 model.addAttribute("title", "You are not allowed to access this page");
-                return "errors/403";
+                return "403";
             }
         }
 

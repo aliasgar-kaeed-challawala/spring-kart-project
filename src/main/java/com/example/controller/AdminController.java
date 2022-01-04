@@ -166,7 +166,8 @@ public class AdminController {
 //			    }
 			 @RequestMapping(value = { "/deleteorder" }, method = RequestMethod.GET)
 			    public String deleteOrder(@RequestParam("billid") int billid) {
-			        billDAO.deleteById(billid);
+			        BillDTO bill = billDAO.getById(billid);
+			        billDAO.delete(bill);
 			        return "redirect:/admin/ordersadmin";
 			    }
 			 @RequestMapping(value = { "/logout" }, method = RequestMethod.GET)

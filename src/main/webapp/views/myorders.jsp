@@ -48,18 +48,18 @@
                     <span><a href="/logout"><button type="button" class="btn btn-outline-warning">Logout</button></a></span>
                     <span class="badge bg-secondary rounded-pill" style="color:white;">${bills.size()}</span>
                 </h4>
-                
+                 <ul class="list-group mb-3"> 
                 <c:forEach var="bill" items="${bills}" varStatus="status">
-                <ul class="list-group mb-3">
+              
                     <li class="list-group-item d-flex justify-content-between align-items-center lh-sm\">
                         <div>
                             <h6 class="my-0">Bill Id : ${bill.billid}</h6>
                             <small class="text-muted"></small>
                             <br>
                             <p class="my-0">Bill Date: ${bill.billdate}</p>
-                            <%-- <a href="/viewdetails?billid=${bill.billid}" ><button type="button" style="margin:20px 10px;"
+                            <a href="/viewdetails?billid=${bill.billid}" ><button type="button" style="margin:20px 10px;"
                                     class="btn btn-sm btn-outline-info">View details
-                                    </button></a> --%>
+                                    </button></a> 
                             
                         </div>
                         <span class="text-muted">&#8377;${bill.total}</span>

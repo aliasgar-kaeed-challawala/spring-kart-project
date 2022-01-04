@@ -62,11 +62,11 @@ uri="http://www.springframework.org/tags/form"%>
 					            <td>${bill.total}</td>
 					            
 					            
-					            <td class="d-flex">
-					            	<%-- <a href="/admin/editorder?billid=${bill.billid}" style="margin-right:4px;" class="btn btn-warning btn-sm">EDIT</a>
-					            	<br> --%>
+					            <%-- <td class="d-flex">
+					            	<a href="/admin/editorder?billid=${bill.billid}" style="margin-right:4px;" class="btn btn-warning btn-sm">EDIT</a>
+					            	<br>
 					            	<a href="/admin/deleteorder?billid=${bill.billid}" class="btn btn-danger ml-2 btn-sm">DELETE</a>
-					            </td>
+					            </td> --%>
 					            </tr>
 		        			</c:forEach>
 		                </tbody>

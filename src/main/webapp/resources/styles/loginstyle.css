@@ -35,3 +35,16 @@ body {
     font-family: 'Ubuntu', sans-serif;
     border:2px solid #118ab2;
 }
+
+
+.btn-login{
+	border:2px solid #118ab2 !important;
+	background-color:#118ab2 !important;
+	color: #fff !important;
+}
+
+.btn-login:hover{
+	border:2px solid #118ab2 !important;
+	background-color:#fff !important;
+	color: #118ab2 !important;
+}

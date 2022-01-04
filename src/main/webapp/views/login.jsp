@@ -32,6 +32,7 @@ uri="http://www.springframework.org/tags/form"%>
         color: #ff0000;
       }
     </style> -->
+   
   </head>
 
   <body>
@@ -40,21 +41,33 @@ uri="http://www.springframework.org/tags/form"%>
             <div class="card-body">
               <h3 class="card-title form-head">Login</h3>
               <form  method="POST">
+              
                 <label for="username" class="form-element" >Username</label><br>
                 <input type="text" placeholder="Enter username" class="form-element form-input-elt" name="username" id="username" /><br>
                 <label for="password" class="form-element" >Password</label><br>
                 <input type="password"  placeholder="Enter password" class="form-element form-input-elt" name="password" id="password" /><br>
-                
-                <input type="submit" value="Sign in" class="btn button btn-outline-success" >
-          
+                <!-- button onclick -->
+                <input type="submit" value="Sign in" class="btn button btn-login text-center">
+          		<div id="errorMessage" style="display:none;width:250px;margin:15px;height:40px;padding:5px;" class="alert alert-danger" role="alert">Invalid Credentials</div>
               </form>
               <p>Don't have an account? <a href="/register">Register</a></p>
             </div>
           </div>
 
-      </center>
+      </center>	
 
-    
+    <script>
+	    function errorHandler()
+	    {
+	    const urlParams = new URLSearchParams(window.location.search);
+		const error = urlParams.get('error');
+		if(error)
+		{
+		document.getElementById('errorMessage').style.display= 'block' ;
+		}
+	    }
+	    errorHandler();	
+    </script>
    
     
   </body>
